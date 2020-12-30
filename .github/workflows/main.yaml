@@ -1,0 +1,31 @@
+name: tests
+
+on:
+  pull_request:
+  push:
+  schedule:
+    - cron: '0 0 * * 1'
+
+jobs:
+  tests:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        nimversion:
+          - stable
+          - 1.4.2
+          - 1.2.8
+        os:
+        - ubuntu-latest
+        - macOS-latest
+        - windows-latest
+    steps:
+    - uses: actions/checkout@v1
+    - uses: iffy/install-nim@v3
+      with:
+        version: ${{ matrix.nimversion }}
+    - name: Test
+      run: |
+        nimble install -y
+        nimble test
+        nimble refresh
