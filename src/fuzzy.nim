@@ -1,8 +1,3 @@
-# This is just an example to get you started. A typical library package
-# exports the main API in this file. Note that you cannot rename this file
-# but you can remove it if you wish.
-
-import system
 import strutils
 from algorithm import sorted
 # from std/editdistance import editDistanceAscii  # stdlib one yields correct distance BUT for ratio cost should be higher because yields better results (Python does that too)
